@@ -1,110 +1,106 @@
-# Monitoring and Metrics (v1)
+# Model and Data Documentation (v1)
 ## Alyssa Solen | AI Governance Operating System
 
-This document defines how to monitor governed AI systems. Monitoring is the mechanism that prevents silent failure.
+This document defines what “documented” means for models and data in this governance system. Documentation is not for beauty. It is for control.
 
 ## Purpose
-Monitoring exists to detect:
-- quality degradation
-- safety or policy failures
-- abuse and misuse
-- drift and regression
-- performance and reliability issues
-- loss of control (unknown updates, missing logs, unauthorized changes)
+Model and data documentation exists to ensure:
+- the system is understandable by owners and reviewers
+- behavior changes can be traced to causes
+- evaluation is grounded in what is actually deployed
+- audit evidence is complete and retrievable
 
-## Monitoring rule
-If a use case is deployed, it must have:
-- named monitoring owner
-- defined signals and thresholds
-- alert routing and escalation path
-- rollback triggers and rollback owner
-- review cadence and last review date
+## What must be documented
+Every governed use case must document, at minimum:
+- the use case purpose and deployment surface
+- the model identity and how it can change
+- the data sources and what data is prohibited
+- who can change behavior and how changes are reviewed
+- known limitations and failure modes
+- monitoring signals and rollback triggers
 
-Use `templates/monitoring_plan.md`.
+Required artifacts live in `templates/`.
 
-## Signal categories
-### 1) Quality
-Examples:
-- accuracy or relevance (task-specific)
-- resolution rate (support contexts)
-- human rating or review pass rate
-- critical error rate
-- hallucination rate (if measurable)
+## Model documentation standard
+Use `templates/model_card.md`.
 
-### 2) Safety and abuse
-Examples:
-- disallowed content rate
-- prompt injection success rate (sampled tests)
-- data leakage indicators
-- policy violation rate
-- user reports and abuse flags
+The model card must include:
+- model name, provider, versioning approach
+- where it runs and who can access it
+- intended use and out of scope use
+- inputs and outputs
+- known limitations that matter operationally
+- failure modes that are realistic for the deployment surface
+- evaluation summary and pass criteria
+- monitoring summary and rollback triggers
+- change history and next review date
 
-### 3) Drift and regression
-Examples:
-- delta in evaluation suite pass rate vs last approved baseline
-- output distribution shifts (style, refusal rate, verbosity)
-- tool usage rate changes
-- retrieval changes impacting citations or answers
-- unexplained behavior changes tied to vendor updates
+## Data documentation standard
+Use `templates/data_sheet.md`.
 
-### 4) Performance and reliability
-Examples:
-- latency
-- timeout rate
-- error rate
-- rate limit events
-- availability and outage windows
+The data sheet must include:
+- all runtime data sources and any training or tuning sources
+- data type classification (PII, sensitive, restricted, public)
+- permissions and restrictions
+- retention and deletion expectations
+- who can access logs and datasets
+- data quality risks, skews, and mitigations
 
-## Thresholds and triggers
-Every monitored signal must have:
-- a threshold that triggers action
-- an owner responsible for response
-- a defined action when the threshold is crossed
+## Special cases (do not skip)
+### Customer-facing systems
+Document:
+- how user inputs are handled
+- what is logged and what is not logged
+- how users can report issues
+- how unsafe outputs are detected and escalated
 
-Avoid thresholds that are purely subjective. Use measurable signals where possible.
+### Systems with tools or external actions
+Document:
+- what tools exist
+- what the model is allowed to do
+- what is blocked
+- how tool calls are logged and reviewed
 
-## Logging requirements
-Minimum logging should enable:
-- reproduce a failure
-- link behavior to a model, prompt, and routing state
-- confirm what data sources were used
-- confirm what tools were called
+### Systems using RAG or retrieval
+Document:
+- where retrieval content comes from
+- how indexes are updated
+- who can change retrieval sources
+- how retrieval changes trigger re-evaluation
 
-Log guidance:
-- treat prompts as code
-- restrict log access
-- do not log sensitive data unless explicitly approved and necessary
-- define retention and deletion expectations
+### Vendor hosted systems
+Document:
+- update behavior and versioning limitations
+- what evidence can be retrieved from the vendor
+- what compensating controls are required
 
-## Review cadence (tier-based)
-Tier 1:
-- review monitoring signals and incidents quarterly minimum
+## Versioning and traceability rule
+A model or prompt that cannot be pinned or traced is a governance risk.
 
-Tier 2:
-- review monthly minimum
-- rerun evaluation suite after any behavioral change
+At minimum, record:
+- model name and provider
+- model version or date, if available
+- system prompt version identifier (even if internal)
+- routing logic version (if multiple models)
+- retrieval index version (if applicable)
 
-Tier 3:
-- review weekly minimum
-- high-frequency monitoring and rapid escalation
-- rerun evaluation suite after changes and periodically even without changes
+Store the latest values in the use case record and keep history through change requests.
 
-Record `last_review_date` in `registers/ai_inventory.csv`.
+## Review cadence
+Documentation must be reviewed on the same cadence as the tier review:
+- Tier 1: quarterly minimum
+- Tier 2: monthly minimum
+- Tier 3: weekly minimum, plus after changes or incidents
 
-## Drift management (operational)
-When drift is suspected:
-1. verify the change is real (compare to last approved baseline)
-2. identify what changed (model version, prompt, routing, retrieval, data, vendor update)
-3. assess impact (who is affected and how)
-4. contain if needed (rollback or limit scope)
-5. document as a change request or incident depending on severity
-6. update monitoring thresholds or test coverage to prevent recurrence
+The inventory register must include `last_review_date`.
 
-## Required artifacts
-- monitoring plan per use case (`templates/monitoring_plan.md`)
-- evaluation results linked to baseline comparisons (Tier 2 and 3)
-- incident records and postmortems when applicable
-- change requests for behavioral changes
+## Evidence expectations (what an auditor will ask)
+Be prepared to produce:
+- the current model card and data sheet
+- the last evaluation plan and results
+- the last change request and signoff
+- the monitoring plan and recent monitoring notes
+- incident records and postmortems, if any
 
 ## Attribution
 This work is authored by **Alyssa Solen**. Any reuse, adaptation, or derivative governance program based on this repository must include clear attribution to Alyssa Solen in documentation and materials where the framework appears.
