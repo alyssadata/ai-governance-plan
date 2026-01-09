@@ -1,0 +1,134 @@
+name: "AI Incident Report"
+description: "Report any incident involving safety failures, data leakage, harmful outputs, major regression, drift, or loss of control."
+title: "[Incident] <use case id> - <short description>"
+labels: ["incident"]
+body:
+  - type: input
+    id: incident_id
+    attributes:
+      label: Incident ID (optional)
+      placeholder: "INC-001"
+    validations:
+      required: false
+
+  - type: input
+    id: use_case_id
+    attributes:
+      label: Use case ID
+      placeholder: "UC-001"
+    validations:
+      required: true
+
+  - type: input
+    id: use_case_name
+    attributes:
+      label: Use case name
+      placeholder: "Short name"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Risk tier
+      options:
+        - "T0"
+        - "T1"
+        - "T2"
+        - "T3"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - "Low"
+        - "Medium"
+        - "High"
+        - "Critical"
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Incident summary
+      description: "What happened, in factual terms."
+      placeholder: "Observed behavior:\nImpact:\nDuration:\nWho noticed:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Timeline (UTC or local time, be consistent)
+      placeholder: "Time - event\nTime - event\nTime - containment"
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact assessment
+      description: "Who was impacted and what harm occurred or could have occurred?"
+      placeholder: "Users affected:\nPotential harms:\nRegulatory implications (if any):"
+    validations:
+      required: true
+
+  - type: textarea
+    id: detection
+    attributes:
+      label: Detection and monitoring
+      description: "How was this detected? Did monitoring alert, or was it reported?"
+      placeholder: "Detected by:\nMonitoring signal (if any):\nWhy not caught earlier (if relevant):"
+    validations:
+      required: true
+
+  - type: textarea
+    id: containment
+    attributes:
+      label: Containment and rollback
+      description: "What immediate steps were taken to stop or limit the issue?"
+      placeholder: "Containment steps:\nRollback performed (Y/N):\nRollback details:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: suspected_cause
+    attributes:
+      label: Suspected cause
+      description: "What likely caused this? (model update, prompt change, routing change, vendor update, data change, misuse)"
+      placeholder: "Suspected cause:\nRelated change request links:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence_links
+    attributes:
+      label: Evidence and links
+      description: "Link logs, screenshots, example prompts/outputs, dashboards, deployments, commits."
+      placeholder: "- Logs:\n- Example outputs:\n- Dashboard:\n- Commit/deploy:\n- Change request:"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: required_actions
+    attributes:
+      label: Required actions
+      options:
+        - label: "Create or link a change request for any fix that alters behavior"
+        - label: "Complete a postmortem for Medium/High/Critical incidents (templates/incident_postmortem.md)"
+        - label: "Update monitoring plan if detection failed or thresholds were insufficient"
+        - label: "Update registers (ai_inventory last_review_date, risk_register if needed)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: owners
+    attributes:
+      label: Owners and escalation
+      placeholder: "Technical owner:\nBusiness owner:\nGovernance reviewer (Tier 2+):\nExecutive sponsor (Tier 3):\nEscalation path used:"
+    validations:
+      required: true
