@@ -1,3 +1,2 @@
 use_case_id,use_case_name,tier,owner,tech_owner,status,model_vendor_or_name,data_sources,customer_facing,uses_pii,regulated_domain,last_review_date,notes
-UC-001,,,,,,,,,,,,,
-
+UC-001,,,,,,,,,,,,
