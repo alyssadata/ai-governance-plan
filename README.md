@@ -48,7 +48,6 @@ If you cannot show it in an audit trail, you do not have governance.
 ## Repository Structure
 
 ```
-
 ai-governance-plan/
 ├── README.md
 ├── LICENSE
