@@ -1,36 +1,58 @@
-# AI Governance Plan | Institution Ready
-**Authored by Alyssa Solen**
+# Alyssa Solen | AI Governance Operating System
 
+**Authored by Alyssa Solen**  
 Structured and authored by Alyssa Solen, grounded in the lived experience of Alyssa Frances Maldon.
 
-This repository is a practical AI governance operating kit for institutions that need:
-- a repeatable intake + approval process for AI use cases
-- risk tiering and control requirements by tier
-- model + data documentation standards
-- monitoring and incident response procedures
-- audit evidence and decision traceability
+## What this is
+This repository is a practical AI governance operating system for institutions that need to prove control over AI systems across the full lifecycle.
+
+Governance here is not a slide deck. It is:
+- inventory
+- accountability
+- controls
+- evidence
+- monitoring
+- incident response
+
+If you cannot show it in an audit trail, you do not have governance.
+
+## Who this is for
+- institutions deploying AI in products, operations, or decision support
+- risk, compliance, security, and engineering teams who need a shared operating model
+- leaders who need a repeatable way to approve, monitor, and explain AI use
 
 ## What’s included
-- **docs/**: governance process docs (roles, tiering, controls, monitoring, incident response)
-- **templates/**: copy/paste-ready forms for intake, risk assessment, model cards, evaluations, monitoring, exceptions
-- **registers/**: simple CSV registers for inventory, risks, and exceptions
-- **.github/**: issue templates to make governance “operational” in GitHub
+- **docs/**: the operating model (roles, tiering, controls, approvals, monitoring, incidents, audit evidence)
+- **templates/**: copy/paste-ready forms for intake, risk assessment, model cards, evaluation plans, monitoring plans, exceptions, postmortems
+- **registers/**: lightweight CSV registers for inventory, risk, and exceptions
+- **.github/**: issue templates to run governance in GitHub (intake, change control, incident reporting)
 
-## How to use (quick start)
-1. Create a new issue using **New AI Use Case Intake**
-2. Complete the intake + risk assessment templates
-3. Apply the required controls for the assigned risk tier
-4. Document evaluation + release checklist
-5. Track monitoring signals and file incidents via templates when needed
+## Quick start
+1. Create a new issue using the **New AI Use Case Intake** template.
+2. Complete the intake and assign a risk tier.
+3. Implement the required controls for that tier.
+4. Produce the required evidence artifacts (templates).
+5. Launch with monitoring and a rollback plan.
+6. File incidents and postmortems using the repo templates.
 
-## Governance principle
-Governance is not a slideshow. It is:
-- **inventory**
-- **accountability**
-- **controls**
-- **evidence**
-- **monitoring**
-- **response**
+## Core governance loop
+1) **Intake**: define the use case, owners, model, data, and impact  
+2) **Tier**: assign risk tier using consistent criteria  
+3) **Controls**: apply control requirements by tier  
+4) **Evidence**: generate artifacts that prove due diligence  
+5) **Monitor**: detect drift, failures, and misuse  
+6) **Respond**: escalate, contain, and document incidents  
+7) **Review**: periodic reassessment and change control
+
+## Repo structure
+- `GOVERNANCE_CHARTER.md`  
+- `docs/`  
+- `templates/`  
+- `registers/`  
+- `.github/ISSUE_TEMPLATE/`  
+
+
+
 
 ## Repository Structure
 
@@ -80,3 +102,6 @@ ai-governance-plan/
 
 ## Attribution and reuse
 This work is authored by **Alyssa Solen**. Any reuse, adaptation, or derivative governance program based on this repository must include clear attribution to Alyssa Solen in documentation and materials where the framework appears.
+
+## License
+See `LICENSE`. If a conflict exists between convenience and authorship integrity, authorship integrity wins.
