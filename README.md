@@ -48,6 +48,7 @@ If you cannot show it in an audit trail, you do not have governance.
 ## Repository Structure
 
 ```
+
 ai-governance-plan/
 ├── README.md
 ├── LICENSE
@@ -55,9 +56,11 @@ ai-governance-plan/
 ├── CODEOWNERS
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
-│   │   ├── new_use_case.yml
+│   │   ├── config.yml
+│   │   ├── exception_request.yml
+│   │   ├── incident_report.yml
 │   │   ├── model_change.yml
-│   │   └── incident_report.yml
+│   │   └── new_use_case.yml
 │   └── workflows/
 │       └── lint.yml
 ├── docs/
@@ -70,24 +73,29 @@ ai-governance-plan/
 │   ├── 06_monitoring_and_metrics.md
 │   ├── 07_incident_response.md
 │   ├── 08_vendor_and_procurement.md
-│   └── 09_audit_evidence.md
-├── templates/
-│   ├── use_case_intake.md
-│   ├── risk_assessment.md
-│   ├── model_card.md
-│   ├── data_sheet.md
-│   ├── evaluation_plan.md
-│   ├── release_checklist.md
-│   ├── monitoring_plan.md
-│   ├── incident_postmortem.md
-│   └── exception_request.md
+│   ├── 08a_procurement_intake_checklist.md
+│   ├── 09_audit_evidence.md
+│   ├── 10_security_and_access_controls.md
+│   ├── 11_review_cadence.md
+│   ├── 12_change_control_rules.md
+│   └── glossary.md
+├── examples/
+│   ├── filled_model_card_example.md
+│   └── filled_use_case_intake_example.md
 ├── registers/
 │   ├── ai_inventory.csv
-│   ├── risk_register.csv
-│   └── exceptions.csv
-└── examples/
-    ├── filled_use_case_intake_example.md
-    └── filled_model_card_example.md
+│   ├── exceptions.csv
+│   └── risk_register.csv
+└── templates/
+    ├── data_sheet.md
+    ├── evaluation_plan.md
+    ├── exception_request.md
+    ├── incident_postmortem.md
+    ├── model_card.md
+    ├── monitoring_plan.md
+    ├── release_checklist.md
+    ├── risk_assessment.md
+    └── use_case_intake.md
 
 ```
 
