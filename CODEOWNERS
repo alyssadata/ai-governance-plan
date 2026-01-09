@@ -1,1 +1,11 @@
+# Path: CODEOWNERS
+# Alyssa Solen | AI Governance Operating System
+# Default owner for everything in this repo.
+
+* @alyssadata
+
+# Optional: if you later add a governance review team, you can route docs or templates to them.
+# /docs/ @alyssadata
+# /templates/ @alyssadata
+# /.github/ @alyssadata
 
