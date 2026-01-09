@@ -1,7 +1,7 @@
-# ai-governance-plan
-A governance repo that lets an institution:  inventory AI use cases  classify risk  enforce approvals + controls  document decisions (audit trail)  monitor + respond to incidents
+# AI Governance Plan | Institution Ready
+**Authored by Alyssa Solen**
 
-# AI Governance Plan (Institution-Ready)
+Structured and authored by Alyssa Solen, grounded in the lived experience of Alyssa Frances Maldon.
 
 This repository is a practical AI governance operating kit for institutions that need:
 - a repeatable intake + approval process for AI use cases
