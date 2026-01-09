@@ -1,0 +1,2 @@
+exception_id,use_case_id,control,justification,compensating_controls,owner,approved_by,expiry_date,status,notes
+EX-001,UC-001,,,,,,,,,
