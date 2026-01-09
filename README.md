@@ -44,15 +44,6 @@ If you cannot show it in an audit trail, you do not have governance.
 6) **Respond**: escalate, contain, and document incidents  
 7) **Review**: periodic reassessment and change control
 
-## Repo structure
-- `GOVERNANCE_CHARTER.md`  
-- `docs/`  
-- `templates/`  
-- `registers/`  
-- `.github/ISSUE_TEMPLATE/`  
-
-
-
 
 ## Repository Structure
 
