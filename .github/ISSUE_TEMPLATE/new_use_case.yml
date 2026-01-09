@@ -1,1 +1,32 @@
+name: "New AI Use Case Intake"
+description: "Start governance intake for a new AI use case"
+title: "[Use Case] <name>"
+labels: ["intake"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Paste completed templates/use_case_intake.md here.
+      placeholder: "Use Case Intake..."
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Proposed Risk Tier
+      options:
+        - "T0"
+        - "T1"
+        - "T2"
+        - "T3"
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Business Owner
+      placeholder: "Name / team"
+    validations:
+      required: true
 
