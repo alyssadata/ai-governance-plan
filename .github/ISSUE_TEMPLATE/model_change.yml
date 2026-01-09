@@ -1,0 +1,131 @@
+name: "Model / Prompt / Routing Change Request"
+description: "Record and approve any change that can alter AI behavior (model, prompt, tools, routing, RAG, data sources)."
+title: "[Change] <use case id> - <short description>"
+labels: ["change-control"]
+body:
+  - type: input
+    id: use_case_id
+    attributes:
+      label: Use case ID
+      placeholder: "UC-001"
+    validations:
+      required: true
+
+  - type: input
+    id: use_case_name
+    attributes:
+      label: Use case name
+      placeholder: "Short name"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Risk tier
+      options:
+        - "T0"
+        - "T1"
+        - "T2"
+        - "T3"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Change type
+      options:
+        - "Model swap or version change"
+        - "System prompt / instruction change"
+        - "Tooling / function calling change"
+        - "Routing / orchestration change"
+        - "RAG / retrieval source or index change"
+        - "Data source or permission change"
+        - "Safety / policy configuration change"
+        - "Other behavior-affecting change"
+    validations:
+      required: true
+
+  - type: textarea
+    id: change_summary
+    attributes:
+      label: Change summary
+      description: "What is changing, in plain language. Include before/after."
+      placeholder: "Before: ...\nAfter: ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why this change is needed
+      placeholder: "Bug fix, quality improvement, cost reduction, vendor update, new requirement..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk_impact
+    attributes:
+      label: Risk impact assessment
+      description: "What could go wrong because of this change? Who could be impacted?"
+      placeholder: "Risks:\n- \nImpact:\n- "
+    validations:
+      required: true
+
+  - type: textarea
+    id: controls_affected
+    attributes:
+      label: Controls affected
+      description: "List controls that need to be re-validated (docs/04_controls_catalog.md)."
+      placeholder: "- E2 Evaluation plan\n- G2 Monitoring thresholds\n- H2 Rollback"
+    validations:
+      required: true
+
+  - type: textarea
+    id: eval_plan
+    attributes:
+      label: Evaluation plan for this change
+      description: "Link or describe the evaluation you will run. Tier 2 and 3 require re-evaluation for behavior changes."
+      placeholder: "Plan:\n- \nPass criteria:\n- "
+    validations:
+      required: true
+
+  - type: textarea
+    id: rollout
+    attributes:
+      label: Rollout plan
+      description: "How will you deploy safely? Include phased rollout, feature flags, or scope limits if applicable."
+      placeholder: "Steps:\n1.\n2.\nRollback trigger:\n- "
+    validations:
+      required: true
+
+  - type: textarea
+    id: monitoring_updates
+    attributes:
+      label: Monitoring updates
+      description: "What monitoring signals or thresholds change because of this update?"
+      placeholder: "Signals:\n- \nThresholds:\n- "
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: evidence
+    attributes:
+      label: Evidence attached or linked
+      options:
+        - label: "Updated model card and/or data sheet (if applicable)"
+        - label: "Evaluation results attached (or will be attached before rollout)"
+        - label: "Updated monitoring plan (if applicable)"
+        - label: "Register updates planned (ai_inventory, risk_register if needed)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: approvals
+    attributes:
+      label: Approvals required and signoff record
+      description: "Record who must approve based on tier. Tier 3 requires formal signoff before rollout."
+      placeholder: "Business owner:\nTechnical owner:\nGovernance reviewer (Tier 2+):\nSecurity/legal (Tier 3 as applicable):\nDecision:\nDate:"
+    validations:
+      required: true
