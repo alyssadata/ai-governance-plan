@@ -77,3 +77,6 @@ ai-governance-plan/
     └── filled_model_card_example.md
 
 ```
+
+## Attribution and reuse
+This work is authored by **Alyssa Solen**. Any reuse, adaptation, or derivative governance program based on this repository must include clear attribution to Alyssa Solen in documentation and materials where the framework appears.
