@@ -1,1 +1,97 @@
+# Path: .github/workflows/lint.yml
+name: Repo checks (YAML + CSV)
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install minimal deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+
+      - name: Validate YAML files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import sys
+          import yaml
+
+          yaml_paths = list(Path(".").rglob("*.yml")) + list(Path(".").rglob("*.yaml"))
+          errors = []
+
+          for p in sorted(set(yaml_paths)):
+            try:
+              text = p.read_text(encoding="utf-8")
+              yaml.safe_load(text)
+            except Exception as e:
+              errors.append(f"{p}: {e}")
+
+          if errors:
+            print("YAML validation failed:")
+            for e in errors:
+              print(" -", e)
+            sys.exit(1)
+
+          print(f"YAML OK: {len(set(yaml_paths))} file(s) validated")
+          PY
+
+      - name: Validate CSV column counts in registers/
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import csv
+          import sys
+
+          reg_dir = Path("registers")
+          if not reg_dir.exists():
+            print("No registers/ directory found, skipping CSV validation.")
+            sys.exit(0)
+
+          csv_files = sorted(reg_dir.glob("*.csv"))
+          if not csv_files:
+            print("No CSV files found in registers/, skipping CSV validation.")
+            sys.exit(0)
+
+          errors = []
+
+          for f in csv_files:
+            with f.open("r", encoding="utf-8", newline="") as fh:
+              reader = csv.reader(fh)
+              rows = list(reader)
+
+            if not rows:
+              errors.append(f"{f}: empty file")
+              continue
+
+            header = rows[0]
+            expected = len(header)
+
+            for i, row in enumerate(rows[1:], start=2):
+              if len(row) != expected:
+                errors.append(
+                  f"{f}: row {i} has {len(row)} columns, expected {expected}"
+                )
+
+          if errors:
+            print("CSV validation failed:")
+            for e in errors:
+              print(" -", e)
+            sys.exit(1)
+
+          print(f"CSV OK: {len(csv_files)} file(s) validated")
+          PY
 
