@@ -1,0 +1,122 @@
+# Path: .github/ISSUE_TEMPLATE/exception_request.yml
+name: "Governance Exception Request"
+description: "Request a time-bound exception to a required control, with compensating controls and an expiry date."
+title: "[Exception] <use case id> - <control> - <short reason>"
+labels: ["exception"]
+body:
+  - type: input
+    id: exception_id
+    attributes:
+      label: Exception ID (optional)
+      placeholder: "EX-001"
+    validations:
+      required: false
+
+  - type: input
+    id: use_case_id
+    attributes:
+      label: Use case ID
+      placeholder: "UC-001"
+    validations:
+      required: true
+
+  - type: input
+    id: use_case_name
+    attributes:
+      label: Use case name
+      placeholder: "Short name"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Risk tier
+      options:
+        - "T0"
+        - "T1"
+        - "T2"
+        - "T3"
+    validations:
+      required: true
+
+  - type: textarea
+    id: control_not_met
+    attributes:
+      label: Control not met
+      description: "Name the control and reference it (docs/04_controls_catalog.md). Be specific."
+      placeholder: "Control:\nReference:\nWhy it applies:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification
+      description: "Why the control cannot be met right now. Provide operational constraints, not vague reasons."
+      placeholder: "Constraint:\nWhy now:\nWhat would be required to meet the control:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk_impact
+    attributes:
+      label: Risk impact
+      description: "What risk increases because of this exception? Who could be impacted?"
+      placeholder: "Increased risk:\nPotential harms:\nScope of impact:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: compensating_controls
+    attributes:
+      label: Compensating controls
+      description: "List safeguards that reduce risk while the exception exists."
+      placeholder: "- Compensating control 1\n- Compensating control 2\n- Monitoring or review changes"
+    validations:
+      required: true
+
+  - type: input
+    id: expiry_date
+    attributes:
+      label: Expiry date (required)
+      description: "Exceptions must expire. Use YYYY-MM-DD."
+      placeholder: "2026-02-01"
+    validations:
+      required: true
+
+  - type: textarea
+    id: closure_plan
+    attributes:
+      label: Closure plan
+      description: "How will this exception be closed? What is the plan to meet the control by expiry?"
+      placeholder: "Steps:\n1.\n2.\n3.\nOwner deliverables by date:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: owners
+    attributes:
+      label: Owners
+      placeholder: "Business owner:\nTechnical owner:\nException closure owner:"
+    validations:
+      required: true
+
+  - type: textarea
+    id: approvals
+    attributes:
+      label: Approvals and decision
+      description: "Record required approvals based on tier. Tier 3 requires formal signoff."
+      placeholder: "Governance reviewer:\nSecurity/legal (Tier 3 as applicable):\nDecision: Approved / Approved with conditions / Rejected\nConditions:\nDate:"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: register_updates
+    attributes:
+      label: Register updates
+      options:
+        - label: "I will add/update an entry in registers/exceptions.csv once approved"
+        - label: "I will update registers/ai_inventory.csv last_review_date if this exception affects ongoing governance"
+    validations:
+      required: true
