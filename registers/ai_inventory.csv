@@ -1,2 +1,2 @@
 use_case_id,use_case_name,tier,business_owner,technical_owner,status,model_or_vendor,data_classification,pii,phi,financial,approval_method,notes
-UC-001,Internal AI Governance Assistant (Demo),T0,Alyssa Solen,Alyssa Solen,Proposed,ChatGPT (OpenAI),Public-safe and synthetic only,N,N,N,Manual (internal),Demo use case to exercise governance workflow
+UC-001,Internal AI Governance Assistant (Demo),T0,Alyssa Solen,Alyssa Solen,Proposed,ChatGPT (OpenAI),Public-safe and synthetic only,N,N,N,Manual (internal),Demo use case to exercise governance workflow | Reviewed 2026-01-09
