@@ -16,6 +16,33 @@ Governance here is not a slide deck. It is:
 
 If you cannot show it in an audit trail, you do not have governance.
 
+## Why this matters
+
+AI governance is becoming operational infrastructure. Not a policy deck. Not a committee. An institution needs repeatable, auditable mechanics that hold up under real use.
+
+Most teams have one of these problems:
+- Policies exist, but nothing translates them into day-to-day decisions.
+- People move fast, but approvals and documentation do not keep up.
+- “Risk” is discussed, but not recorded in a structured, reviewable way.
+- Incidents happen, but there is no consistent post-incident loop to prevent repeats.
+- Exceptions get granted informally and never expire.
+
+This repo exists to solve that gap with a simple operating system:
+- **Intake**: every AI use case is documented and scoped before it spreads.
+- **Inventory**: the register becomes the source of truth, not tribal knowledge.
+- **Change control**: model, prompt, routing, and data changes become auditable events.
+- **Risk and exceptions**: risks are tracked, exceptions expire, and compensating controls are explicit.
+- **Incident response**: near-misses and failures become structured learning, not confusion.
+
+### What you can do with it
+- Stand up a lightweight AI governance process in days, not months.
+- Create a paper trail that executives, auditors, and security teams can follow.
+- Make governance measurable and repeatable using issues, registers, and controls.
+- Prove governance "before harm" (change requests) and "after harm" (incidents), end to end.
+
+**Authorship:** Alyssa Solen | Origin
+Structured and authored by Alyssa Solen, grounded in the lived experience of Alyssa Frances Maldon.
+
 ## Who this is for
 - institutions deploying AI in products, operations, or decision support
 - risk, compliance, security, and engineering teams who need a shared operating model
