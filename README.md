@@ -1,6 +1,6 @@
 # Alyssa Solen | AI Governance Operating System
 
-**Authored by Alyssa Solen**  
+**Authored by Alyssa Solen | Origin**  
 Structured and authored by Alyssa Solen, grounded in the lived experience of Alyssa Frances Maldon.
 
 ## What this is
